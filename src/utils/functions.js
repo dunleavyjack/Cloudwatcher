@@ -31,26 +31,12 @@ export const spotifyGetRequest = async (url, params) => {
     return result.data;
 };
 
-export const getUser = async () => {
+export const getUsersSavedTracks = async () => {
     const params = JSON.parse(localStorage.getItem('params'));
-    console.log(await spotifyGetRequest("https://api.spotify.com/v1/me", params))
-}
+    const songData = await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params)
+    console.log(songData.items)
+    return songData.items
 
-// export const getUser = async (access_token) => {
-//     try {
-//         const params = JSON.parse(localStorage.getItem('params'));
-//         if (params) {
-//             await axios.get("https://api.spotify.com/v1/me", {
-//                 header: {
-//                     "Authorization": "Bearer" + params.access_token
-//                 }
-//             }).then(response => {  
-//                 console.log(response);
-//             }).catch(err => {
-//                 console.log(err)
-//             });
-//         }
-//     } catch(error) {
-//         console.log(error)
-//     }
-// }
+    // console.log(await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params))
+    // return await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params)
+}
