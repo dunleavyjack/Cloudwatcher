@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { getUser } from '../utils/functions';
 
-const Dashboard = () => {
+
+const Dashboard = () =>  {    
     return(
-        <div>Dashboard</div>
+        <div>
+            <p>Dashboard</p>
+            <button onClick={() => getUser()}>Get User Info</button>
+        </div>
     )
 };
 
