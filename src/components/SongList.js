@@ -2,23 +2,10 @@ import React from 'react'
 import SongDisplay from './SongDisplay'
 
 const SongList = ({ songs }) => {
-    console.log(songs)
+    console.log(`songs: ${songs}`)
 
     const displaySongs = songs.map(song => {
-        let name = song.track.name
-        let album = song.track.album.name
-        let artist = song.track.artists[0].name
-        let imageURL = song.track.album.images[1].url
-        return (
-            <div>
-                <SongDisplay
-                    name={name}
-                    album={album}
-                    artist={artist}
-                    imageURL={imageURL}
-                />
-            </div>
-        )
+        return <SongDisplay key={song.track.id} name={song.track.name} album={song.track.album.name} artist={song.track.artists[0].name} imageURL={song.track.album.images[1].url} />  
     })
     return (
         <div>
