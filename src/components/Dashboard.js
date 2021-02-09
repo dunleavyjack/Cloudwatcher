@@ -7,41 +7,25 @@ import { useState } from 'react';
 
 const Dashboard = () =>  {    
     const [likedSongs, setLikedSongs] = useState([])
+    const [displayedSongs, setDisplayedSongs] = useState([])
 
     const showUsersSavedTracks = async () => {
         const usersSavedTracksArray = await getUsersSavedTracks()        
         usersSavedTracksArray.map(savedTrack => {
+            console.log(likedSongs)
             setLikedSongs([...likedSongs, savedTrack])
         })
-
-        
-        // const theSongs = usersSavedTracksArray.map(savedTrack => {
-        //     let name = savedTrack.track.name
-        //     let album = savedTrack.track.album.name 
-        //     let artist = savedTrack.track.artists[0].name
-        //     let imageURL = savedTrack.track.album.images[1].url
-        //     console.log(`${name}, ${album}, ${artist}, ${imageURL}`)
-        // });
-        // setLikedSongs([...likedSongs, theSongs])
     }
 
-    // const showUsersSavedTracks = async () => {
-    //     const usersSavedTracksArray = await getUsersSavedTracks()        
-    //     const theSongs = usersSavedTracksArray.map(savedTrack => {
-    //         let name = savedTrack.track.name
-    //         let album = savedTrack.track.album.name 
-    //         let artist = savedTrack.track.artists[0].name
-    //         let imageURL = savedTrack.track.album.images[1].url
-    //         console.log(`${name}, ${album}, ${artist}, ${imageURL}`)
-    //     });
-    //     console.log(`did this work ${theSongs}`);
-    //     setLikedSongs(theSongs);
-    // }
-    
+    const displayAllSongs = () => {
+        showUsersSavedTracks()
+        setDisplayedSongs([...displayedSongs, likedSongs])
+    }
+
     return(
         <div>
             <p>Dashboard</p>
-            <button onClick={() => showUsersSavedTracks()}>Get Saved Songs</button>
+            <button onClick={() => displayAllSongs()}>Get Saved Songs</button>
             <SongList songs={likedSongs}/>
         </div>
     )
