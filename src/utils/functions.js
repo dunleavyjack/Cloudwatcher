@@ -31,6 +31,7 @@ export const spotifyGetRequest = async (url, params) => {
     return result.data;
 };
 
+// Returns the very important array of song data
 export const getUsersSavedTracks = async () => {
     const params = JSON.parse(localStorage.getItem('params'));
     const songData = await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params)

@@ -3,10 +3,10 @@ import React from 'react'
 const SongDisplay = ({name, album, artist, imageURL}) => {
     return (
         <div>
+            <img src={imageURL} />
             <p>{name}</p>
-            <p>{album}</p>
             <p>{artist}</p>
-            <p>{imageURL}</p>
+            <p>{album}</p>
         </div>
     )
 }
