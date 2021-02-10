@@ -37,7 +37,10 @@ export const getUsersSavedTracks = async () => {
     const songData = await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params)
     console.log(songData.items)
     return songData.items
+}
 
-    // console.log(await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params))
-    // return await spotifyGetRequest("https://api.spotify.com/v1/me/tracks", params)
+// Returns the song analysis
+export const getSongAnalysis = async (id) => {
+    const songAnalysis = await spotifyGetRequest(`https://api.spotify.com/v1/audio-features/${id}`)
+    console.log(songAnalysis)
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SongDisplay = ({name, album, artist, imageURL}) => {
+const SongDisplay = ({name, id, album, artist, imageURL}) => {
     return (
         <div>
             <img src={imageURL} />

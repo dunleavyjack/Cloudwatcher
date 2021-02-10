@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUsersSavedTracks } from '../utils/functions';
+import { getUsersSavedTracks, getSongAnalysis } from '../utils/functions';
 import SongList from './SongList'
 import { useState } from 'react';
 
@@ -12,19 +12,15 @@ const Dashboard = () =>  {
         setLikedSongs(usersSavedTracksArray)
     }
     
-    // const showUsersSavedTracks = async () => {
-    //     const usersSavedTracksArray = await getUsersSavedTracks()        
-    //     usersSavedTracksArray.map(savedTrack => {
-    //         console.log(likedSongs)
-    //         console.log(savedTrack.track.name)
-    //         setLikedSongs([...likedSongs, savedTrack])
-    //     })
-    // }
+    const handleSecondClick = async () => {
+        const analysis = await getSongAnalysis('7p8CYARhjoN78QHsF5RZfV')
+    }
 
     return(
         <div>
             <p>Dashboard</p>
             <button onClick={() => handleClick()}>Get Saved Songs</button>
+            <button onClick={() => handleSecondClick()}>Get Analysis Test</button>
             <SongList songs={likedSongs}/>
         </div>
     )
