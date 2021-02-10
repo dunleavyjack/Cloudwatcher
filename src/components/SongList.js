@@ -2,8 +2,6 @@ import React from 'react'
 import SongDisplay from './SongDisplay'
 
 const SongList = ({ songs }) => {
-    console.log(`songs: ${songs}`)
-
     const displaySongs = songs.map(song => {
         return <SongDisplay 
             key={song.track.id} 
