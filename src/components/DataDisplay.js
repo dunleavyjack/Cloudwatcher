@@ -1,6 +1,10 @@
 import React from 'react'
 
 const DataDisplay = ({ 
+    name,
+    album,
+    artist,
+    imageURL,
     acousticness,
     danceability, 
     duration_ms,
@@ -21,6 +25,10 @@ const DataDisplay = ({
 }) => {
     return (
         <div>
+            <img src={imageURL} />
+            <h2>{name}</h2>
+            <h3>{artist}</h3>
+            <h4>{album}</h4>
             <p>Accousticness:  {acousticness}</p>
             <p>Danceability: {danceability}</p>
             <p>Duration (in ms): {duration_ms}</p>

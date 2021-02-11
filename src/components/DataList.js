@@ -1,10 +1,14 @@
 import React from 'react'
 import DataDisplay from './DataDisplay'
 
-const DataList = ({ songs }) => {
-    console.log(songs)
-    const displaySongs = songs.map(song => {
+const DataList = ({ songsData }) => {
+    console.log(songsData)
+    const displaySongs = songsData.map(song => {
         return <DataDisplay 
+            name={song.name}
+            album={song.album} 
+            artist={song.artist} 
+            imageURL={song.imageURL}   
             acousticness={song.acousticness}
             danceability={song.danceability} 
             duration_ms={song.duration_ms} 

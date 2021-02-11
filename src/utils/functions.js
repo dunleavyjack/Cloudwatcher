@@ -55,6 +55,10 @@ export const getSongAnalysisArray = async (arr) => {
     let resultArr = []
     for (let i = 0; i < arr.length; i++){
         const data = await getSongAnalysis(arr[i].track.id)
+        data.name = arr[i].track.name
+        data.album = arr[i].track.album.name
+        data.artist = arr[i].track.artists[0].name
+        data.imageURL = arr[i].track.album.images[1].url
         resultArr.push(data)
     };
     console.log(resultArr)

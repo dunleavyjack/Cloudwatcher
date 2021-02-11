@@ -43,7 +43,7 @@ const Dashboard = () =>  {
             <button onClick={() => handleSecondClick()}>Get Analysis Test</button>
             <button onClick={() => handleThirdClick()}>Get Recently Played Tracks</button>
             <button onClick={() => handleFourthClick()}>Get Recently Played Tracks Data</button>
-            <DataList songs={playedSongsData} />
+            <DataList songsData={playedSongsData} recentlyPlayed={playedSongsData} />
             <SongList songs={likedSongs} />
             <SongList songs={playedSongs} />
 
