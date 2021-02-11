@@ -1,5 +1,5 @@
 import React from 'react';
-import { getUsersSavedTracks, getSongAnalysis, getRecentlyPlayedTracks } from '../utils/functions';
+import { getUsersSavedTracks, getSongAnalysis, getRecentlyPlayedTracks, getSongAnalysisArray } from '../utils/functions';
 import SongList from './SongList'
 import DataList from './DataList'
 import { useState } from 'react';
@@ -8,6 +8,7 @@ import { useState } from 'react';
 const Dashboard = () =>  {    
     const [likedSongs, setLikedSongs] = useState([])
     const [playedSongs, setPlayedSongs] = useState([])
+    const [playedSongsData, setPlayedSongsData] = useState([])
 
     const handleClick = async () => {
         const usersSavedTracksArray = await getUsersSavedTracks()  
@@ -21,19 +22,31 @@ const Dashboard = () =>  {
 
     const handleThirdClick = async () => {
         const usersRecentlyPlayed = await getRecentlyPlayedTracks()
-        // setPlayedSongs(usersRecentlyPlayed)
         setPlayedSongs(usersRecentlyPlayed)
     }
+    
+    const handleFourthClick = async () => {
+        const theSongData = await getSongAnalysisArray(playedSongs)
+        console.log(theSongData)
+        setPlayedSongsData(theSongData)
+    }
+
+        // const songsData = await Promise.all(playedSongs.map( async (song) => {
+        //     getSongAnalysis(song.track.id)
+        // }))
+        // setPlayedSongsData(songsData)
 
     return(
         <div>
-            <p>Dashboard</p>
+            <h1>Dashboard</h1>
             <button onClick={() => handleClick()}>Get Saved Songs</button>
             <button onClick={() => handleSecondClick()}>Get Analysis Test</button>
             <button onClick={() => handleThirdClick()}>Get Recently Played Tracks</button>
+            <button onClick={() => handleFourthClick()}>Get Recently Played Tracks Data</button>
+            <DataList songs={playedSongsData} />
             <SongList songs={likedSongs} />
             <SongList songs={playedSongs} />
-            <DataList songs={playedSongs} />
+
         </div>
     )
 };

@@ -42,11 +42,21 @@ export const getUsersSavedTracks = async () => {
 // Returns the song analysis
 export const getSongAnalysis = async (id) => {
     const songAnalysis = await spotifyGetRequest(`https://api.spotify.com/v1/audio-features/${id}`)
-    console.log(songAnalysis)
+    return songAnalysis
 }
 
 export const getRecentlyPlayedTracks = async () => {
     const recentlyPlayed = await spotifyGetRequest(`https://api.spotify.com/v1/me/player/recently-played`)
     console.log(recentlyPlayed.items)
     return recentlyPlayed.items
+}
+
+export const getSongAnalysisArray = async (arr) => {
+    let resultArr = []
+    for (let i = 0; i < arr.length; i++){
+        const data = await getSongAnalysis(arr[i].track.id)
+        resultArr.push(data)
+    };
+    console.log(resultArr)
+    return resultArr
 }
